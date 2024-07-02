@@ -4,6 +4,7 @@ import Film from "../Film";
 import Homeworld from "../Homeworld";
 
 export default function CharacterDetail({name, height, hair, birth, homeworld, films, mass, gender, skin}) {
+    // Used to conditionally render the extra info box. Gets toggled by an event listener on the button
     const [showingExtra, setShowingExtra] = useState(false)
     
     return (
@@ -14,10 +15,12 @@ export default function CharacterDetail({name, height, hair, birth, homeworld, f
             <p>Born in { birth }</p>
 
             <h2 className="text-xl my-5 ">Homeworld</h2>
+            {/* Pass the api link to get the homeworld in */}
             <Homeworld homeworld={homeworld} />
 
             <h2 className="text-xl mt-5">Film appearances</h2>
             <div className="grid grid-cols-2 gap-2 mt-5">
+                {/* Films is an array in the JSON, so loop through each one and pass the link for the film in */}
                 {films.map(film => <Film key={film} film={film} />)}
             </div>
 

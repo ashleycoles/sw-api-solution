@@ -5,12 +5,16 @@ export default function Homeworld({homeworld}) {
     const [climate, setClimate] = useState('')
     const [population, setPopulation] = useState('')
 
+
+    // This component is responsible for fetching it's own data
     useEffect(() => {
         fetch(homeworld)
             .then(res => res.json())
             .then(data => {
                 setName(data.name)
                 setClimate(data.climate)
+                // .toLocaleString() is used to format the number. parseInt is needed because the API returns
+                // population as a string. toLocaleString() only works on a number
                 setPopulation(parseInt(data.population).toLocaleString())
             })
     }, [])

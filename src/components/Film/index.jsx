@@ -5,6 +5,7 @@ export default function Film({film}) {
     const [director, setDirector] = useState('')
     const [year, setYear] = useState('')
 
+    // Like the homeworld, this component is responsible for fetching it's own data
     useEffect(() => {
         fetch(film)
             .then(res => res.json())
